@@ -6,6 +6,32 @@ This project implements an Augmented Document Reader (ADOR) system for extractin
 
 ---
 
+## Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- pip package manager
+
+### Required Packages
+
+Install all dependencies using:
+```bash
+pip install python-docx spacy
+python -m spacy download en_core_web_sm
+```
+
+Or install individually:
+```bash
+# For DOCX parser
+pip install python-docx
+
+# For NER chat extractor
+pip install spacy
+python -m spacy download en_core_web_sm
+```
+
+---
+
 ## Deliverables
 
 ### 1. docx_parser.py
@@ -14,6 +40,18 @@ This project implements an Augmented Document Reader (ADOR) system for extractin
 - Extracts 9 entities (Counterparty, Initial Valuation Date, Notional, Valuation Date, Maturity, Underlying, Coupon, Barrier, Calendar)
 - **Technology used**: python-docx library
 - **Reason to choose python-docx library**: DOCX files have structured tables that can be parsed reliably with rule-based extraction.
+
+## Usage
+
+### Running docx_parser.py
+```bash
+python docx_parser.py 
+```
+
+**Example:**
+```bash
+python docx_parser.py ZF4894_ALV_07Aug2026_physical.docx
+```
 
 #### Expected Output:
 
@@ -27,6 +65,16 @@ This project implements an Augmented Document Reader (ADOR) system for extractin
 - Extracts 7-8 entities (Counterparty, Notional, ISIN, Underlying, Maturity, Bid, Offer, PaymentFrequency)
 - **Technology used**: spaCy NER model + custom regex patterns
 - **Reason**: Chat messages are informal and unstructured, requiring NER models to understand context and extract entities accurately
+
+### Running ner_chat_extractor.py
+```bash
+python ner_chat_extractor.py 
+```
+
+**Example:**
+```bash
+python ner_chat_extractor.py FR001400QV82_AVMAFC_30Jun2028.txt
+```
 
 #### Expected Output:
 
